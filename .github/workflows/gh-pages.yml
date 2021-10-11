@@ -9,7 +9,6 @@ jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
-      if: github.ref == 'refs/heads/feature/ci'
       - uses: actions/setup-python@v1
         with:
           python-version: "3.7.11"
