@@ -1,0 +1,32 @@
+name: github pages
+
+on:
+  push:
+    branches:
+      - feature/ci
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    if: github.ref == 'refs/heads/feature/ci'
+    steps:
+      - name: Check out
+        uses: actions/checkout@master
+
+      - uses: actions/setup-python@v1
+        with:
+          python-version: "3.7.x"
+
+      - name: Install dependencies
+        run: |
+          pip install dbt
+          dbt deps
+
+      - name: Generate Documentation
+        run: dbt docs generate
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
