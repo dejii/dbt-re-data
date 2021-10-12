@@ -5,6 +5,13 @@ on:
     branches:
       - feature/ci
 
+env:
+  DBT_PROFILES_DIR: ./
+
+  DBT_SNOWFLAKE_ACCOUNT_DEV: ${{ secrets.DBT_SNOWFLAKE_ACCOUNT_DEV }}
+  DBT_SNOWFLAKE_USER_DEV: ${{ secrets.DBT_SNOWFLAKE_USER_DEV }}
+  DBT_SNOWFLAKE_PASSWORD_DEV: ${{ secrets.DBT_SNOWFLAKE_PASSWORD_DEV }}
+
 jobs:
   deploy:
     runs-on: ubuntu-18.04
@@ -22,7 +29,7 @@ jobs:
           dbt deps
 
       - name: Check dir
-        run: 'mkdir ~/.dbt && cp profiles.yml ~/.dbt && ls ~/.dbt'
+        run: 'mkdir ~/.dbt && cp profiles.yml ~/.dbt && ls ~/.dbt && cat ~/.dbt/profiles.yml'
         shell: bash
 
       - name: Generate Documentation
