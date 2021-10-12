@@ -16,13 +16,6 @@ jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
-      - name: Check dir
-        run: 'pwd && ls'
-        shell: bash
-        
-      - name: Check out
-        uses: actions/checkout@main
-
       - uses: actions/setup-python@v1
         with:
           python-version: "3.7.x"
