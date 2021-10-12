@@ -28,10 +28,6 @@ jobs:
           pip install dbt
           dbt deps
 
-      - name: Check dir
-        run: 'mkdir ~/.dbt && cp profiles.yml ~/.dbt && ls ~/.dbt && cat ~/.dbt/profiles.yml'
-        shell: bash
-
       - name: Generate Documentation
         run: dbt docs generate
 
