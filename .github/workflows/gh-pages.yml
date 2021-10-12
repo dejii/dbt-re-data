@@ -25,7 +25,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install dbt
+          pip install dbt==0.20.0
           dbt deps
 
       - name: Generate Documentation
