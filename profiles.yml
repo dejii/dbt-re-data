@@ -8,5 +8,5 @@ re_data_postgres:
       password: "{{ env_var('DBT_SNOWFLAKE_PASSWORD_DEV') }}" 
       database: REDATA_TESTING
       warehouse: COMPUTE_WH
-      schemaH: dq
+      schema: dq
       threads: 4
